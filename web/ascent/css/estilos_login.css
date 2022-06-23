@@ -1,0 +1,58 @@
+html,
+body {
+  height: 100vh;
+  color: rgb(0, 0, 0);
+}
+
+.gradient {
+  background: #2193b0;
+  background: -webkit-linear-gradient(to top, #6dd5ed, #2193b0);
+  background: linear-gradient(to top, #6dd5ed, #2193b0);
+}
+
+
+.imag{
+  color: black;
+  margin-bottom: 20px;
+} 
+
+.recordar{
+  margin-top: 10px;
+}
+
+
+.princ{
+  width: 400px;
+  height: 500px;
+  background: #ffff;
+  border-radius: 20px;
+ }
+
+.ent{
+  border-radius: 20px;
+}
+
+.reg{
+margin-top: 5px;
+border-radius: 15px;
+}
+
+
+body {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.form-signin {
+  max-width: 330px;
+  border-radius: 20px;
+  padding-top: 20px;
+
+}
+
+.form-floating {
+  margin: 5px;
+
+}
+

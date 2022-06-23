@@ -1,0 +1,81 @@
+.gradient {
+    background: #2193b0;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.oneibar {
+    margin-left: 100px;
+}
+
+.oneibar2 {
+    margin-right: 100px;
+}
+
+.btmbar {
+    margin-right: 20px;
+}
+
+.btndirect {
+    margin-left: 20px;
+}
+
+
+.des {
+    height: 30px;
+}
+
+
+.desarr {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-top: 10px;
+    height: 30px;
+    width: 500px;
+    margin-left: 30px;
+}
+
+.dirtele {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-top: 20px;
+    height: 30px;
+    width: 500px;
+    margin-left: 30px;
+}
+
+
+
+.tst {
+    margin-top: 3.5px;
+    margin-left: 5px;
+}
+
+.cuenuser {
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.301);
+    height: 30px;
+    width: 500px;
+}
+
+.crgrup {
+    background-color: rgba(255, 255, 255, 0.301);
+    margin-left: 30px;
+    height: 30px;
+    width: 500px;
+}
+
+
+
+.btnRegistro{
+    background-color: darkgreen;
+    margin-left: 600px;
+    
+}
+
