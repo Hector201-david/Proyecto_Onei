@@ -176,7 +176,7 @@
                     <%
                      }
                  } catch (Exception e) {
-             System.out.println("Error al conectar con la db");
+            // System.out.println("Error al conectar con la db");
              e.printStackTrace();
          }
                     %>

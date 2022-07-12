@@ -4,8 +4,20 @@
     Author     : DAMAGED
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="conexiones.conexion"%>
 <%@page import="java.sql.*" %>
+
+<%
+    try {
+
+        Connection con = new conexion().getConexion();
+        String query = "SELECT * FROM mod_maestros.tbmaestro_general";
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        
+%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,8 +82,9 @@
 
 
 
+                        <h3>Online</h3>
 
-                        <h4>Online</h4>
+
                         <!--Contenido Modal /Modal-->
                     </div>
                     <div class="modal-footer">
@@ -133,59 +146,65 @@
         <!--/Modal Config-->
 
 
-        <% 
-      try {
-          Class.forName("com.mysql.jdbc.Driver");
-          //1. Crear Conexion
-          Connection miConection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "root", "");
 
-          //2. Crear objeto Statmen
-          Statement mistatment = miConection.createStatement();
 
-          //3.Ejecutar sql
-          ResultSet miResulsert = mistatment.executeQuery("SELECT * FROM address");
-           
-     
-        
-        %>
-
-        <div class="container lll">
+        <div class="container-fluid lll">
             <!-- Tabla del listado de usuarios -->
             <table class="table table-striped my-2" id="tablax">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Dirrecion</th>
-                        <th scope="col">Distrito</th>
-                        <th scope="col">City id</th>
-                        <th scope="col">Codigo postal</th>
+                        <th scope="col">Cod Centro Informant</th>
+                        <th scope="col">Nombre Centro Informant</th>
+                        <th scope="col">Centro Informante corto</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">Codigopostal</th>
                         <th scope="col">phone</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">Cityid</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <%  
-                    //int cont=0;
-                    while (miResulsert.next()) {   
-                    //cont++; &&cont<15
+                    <%         
+                        int cont=0;
+                        while(rs.next()&& cont<5) {
+                        cont++;
                     %>
                     <tr>
-                        <th scope="row"><%=miResulsert.getString(1)%></th>
-                        <td><%=miResulsert.getString(2)%></td>
-                        <td><%=miResulsert.getString(4)%></td>
-                        <td><%=miResulsert.getString(5)%></td>
-                        <td><%=miResulsert.getString(6)%></td>
-                        <td><%=miResulsert.getString(7)%></td>
+                        <th scope="row"><%=rs.getString(1)%></th>
+                        <td><%=rs.getString(2)%></td>
+                        <td><%=rs.getString(3)%></td>
+                        <td><%=rs.getString(4)%></td>
+                        <td><%=rs.getString(5)%></td>
+                        <td><%=rs.getString(6)%></td>
+                        <td><%=rs.getString(7)%></td>
+                        <td><%=rs.getString(8)%></td>
+                        <td><%=rs.getString(9)%></td>
+                        <td><%=rs.getString(10)%></td>
+                        <td><%=rs.getString(11)%></td>
+                        <td><%=rs.getString(9)%></td>
+                        <td><%=rs.getString(10)%></td>
+                        <td><%=rs.getString(11)%></td>
+
                     </tr>
                     <%
-                     }
-                 } catch (Exception e) {
-             System.out.println("Error al conectar con la db");
-             e.printStackTrace();
-         }
+                            }
+                        } catch (Exception e) {
+                            out.println("<h1>Error al Conectar con la DB</h1>");
+                            e.printStackTrace();
+                            String estado_conex = "Online";
+                        }
                     %>
                 </tbody>
             </table>        
             <!-- /Tabla del listado de usuarios -->
+
         </div>
         <div class="container">
             <!--Paginacion-->
