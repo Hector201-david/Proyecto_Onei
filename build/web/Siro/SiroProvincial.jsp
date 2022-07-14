@@ -145,8 +145,29 @@
         </div>
         <!--/Modal Config-->
 
+&nbsp
+&nbsp
+
+        <div class="container">
+            <div class="row">
+
+                <div class="input-group">
+
+                    <input type="text" aria-label="First name" class="form-control">
+                    <span class="input-group-text">Todos
+                        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </span>
+                </div>
 
 
+            </div>
+        </div>
+
+&nbsp
+&nbsp
+&nbsp
+
+        <hr>
 
         <div class="container-fluid lll">
             <!-- Tabla del listado de usuarios -->
