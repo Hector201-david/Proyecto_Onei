@@ -12,9 +12,10 @@ public class conexion {
         try {
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sige", "postgres", "root");
+            System.out.println("\n Conexion Exitosa con la DB");
 
         } catch (Exception e) {
-            System.out.println("Error al conectar con la db " + e.getMessage());
+            System.out.println("Error al Conectar con la DB " + e.getMessage());
         }
 
     }
