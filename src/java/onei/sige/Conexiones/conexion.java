@@ -1,4 +1,4 @@
-package conexiones;
+package onei.sige.Conexiones;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class conexion {
 
         try {
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sige", "postgres", "root");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sige", "postgres", "postgresql");
             System.out.println("\n Conexion Exitosa con la DB");
 
         } catch (Exception e) {
