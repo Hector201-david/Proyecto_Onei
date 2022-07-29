@@ -4,8 +4,21 @@
     Author     : DAMAGED
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="onei.sige.Conexiones.*"%>
+<%@page import="onei.sige.Operaciones.*"%>
 <%@page import="java.sql.*" %>
+
+<%
+    try {
+
+        Connection con = classConexion.getInstance().getConexion();
+        String query = "SELECT * FROM mod_maestros.tbmaestro_general";
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(query);
+
+%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,8 +83,9 @@
 
 
 
+                        <h3>Online</h3>
 
-                        <h4>Online</h4>
+
                         <!--Contenido Modal /Modal-->
                     </div>
                     <div class="modal-footer">
@@ -132,60 +146,176 @@
         </div>
         <!--/Modal Config-->
 
+        &nbsp
+        &nbsp
 
-        <% 
-      try {
-          Class.forName("com.mysql.jdbc.Driver");
-          //1. Crear Conexion
-          Connection miConection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "root", "");
+        <!-- SELECT MODELO -->
+        <div class="input-group mb-1 col-9">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="modelos">Modelos</label>
+            </div>
+            <select class="custom-select" id="modelos" name="modelo">
+                <option value="" selected>Seleccionar ...</option>
+                <option value=""></option>
+            </select>
+        </div>
+        <!-- END SELECT MODELO -->
 
-          //2. Crear objeto Statmen
-          Statement mistatment = miConection.createStatement();
 
-          //3.Ejecutar sql
-          ResultSet miResulsert = mistatment.executeQuery("SELECT * FROM address");
-           
-     
-        
-        %>
+        <!-- SELECT MES -->
+        <div class="input-group mb-1 col-9">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="idmes">Mes</label>
+            </div>
+            <select class="custom-select" id="idmes" name="mes">
+                <option value="" selected>Seleccionar ...</option>
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select>
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="idmes">Todos</label>
+                <div class="input-group-text">
+                    <input type="checkbox" id="allmes" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+        </div>
 
-        <div class="container lll">
+        <!-- END SELECT MES -->
+
+        <!-- SELECT MUNICIPIO -->
+        <div class="input-group mb-1 col-9">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="idmunicipios">Municipio</label>
+            </div>
+            <select class="custom-select" id="idmunicipios" name="codome">
+                <option value="">Seleccionar ...</option>
+                <option value="3301">Rio Cauto</option>
+                <option value="3302">Cauto Cristo</option>
+                <option value="3303">Jiguani</option>
+                <option value="3304">Bayamo</option>
+                <option value="3305">Yara</option>
+                <option value="3306">Manzanillo</option>
+                <option value="3307">Campechuela</option>
+                <option value="3308">Media Luna</option>
+                <option value="3309">Niquero</option>
+                <option value="3310">Pil&oacute;n</option>
+                <option value="3311">Bartolom&eacute; Mas&oacute;</option>
+                <option value="3312">Buey Arriba</option>
+                <option value="3313">Guisa</option>
+
+            </select>
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="idmunicipios">Todos</label>
+                <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input" id="allmunicipio">
+                </div>
+            </div>
+        </div>
+
+        <!-- END SELECT MUNICIPIO -->
+
+        <!-- INPUT YEAR -->
+        <div class="input-group mb-1 col-9">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">A&ntilde;o</label>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with checkbox" id="anio" name="anno">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Actual</label>
+                <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input" id="anioactual">
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group mb-1 col-9">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Desglozar por municipios</label>
+            </div>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input" name="desglozar">
+                </div>
+            </div>
+        </div>
+        <!-- END INPUT YEAR -->
+        <button class="btn btn-success" style="margin-left: 10%;" id="btn-filtrar">Mostrar Datos Filtrados </button>
+
+
+
+
+        &nbsp
+        &nbsp
+        &nbsp
+
+        <hr>
+
+        <div class="container-fluid lll">
             <!-- Tabla del listado de usuarios -->
             <table class="table table-striped my-2" id="tablax">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Dirrecion</th>
-                        <th scope="col">Distrito</th>
-                        <th scope="col">City id</th>
-                        <th scope="col">Codigo postal</th>
+                        <th scope="col">Cod Centro Informant</th>
+                        <th scope="col">Nombre Centro Informant</th>
+                        <th scope="col">Centro Informante corto</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">Codigopostal</th>
                         <th scope="col">phone</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">Cityid</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">Cityid</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <%  
-                    //int cont=0;
-                    while (miResulsert.next()) {   
-                    //cont++; &&cont<15
+                    <%                    int cont = 0;
+                        while (rs.next() && cont < 5) {
+                            cont++;
                     %>
                     <tr>
-                        <th scope="row"><%=miResulsert.getString(1)%></th>
-                        <td><%=miResulsert.getString(2)%></td>
-                        <td><%=miResulsert.getString(4)%></td>
-                        <td><%=miResulsert.getString(5)%></td>
-                        <td><%=miResulsert.getString(6)%></td>
-                        <td><%=miResulsert.getString(7)%></td>
+                        <th scope="row"><%=rs.getString(1)%></th>
+                        <td><%=rs.getString(2)%></td>
+                        <td><%=rs.getString(3)%></td>
+                        <td><%=rs.getString(4)%></td>
+                        <td><%=rs.getString(5)%></td>
+                        <td><%=rs.getString(6)%></td>
+                        <td><%=rs.getString(7)%></td>
+                        <td><%=rs.getString(8)%></td>
+                        <td><%=rs.getString(9)%></td>
+                        <td><%=rs.getString(10)%></td>
+                        <td><%=rs.getString(11)%></td>
+                        <td><%=rs.getString(9)%></td>
+                        <td><%=rs.getString(10)%></td>
+                        <td><%=rs.getString(11)%></td>
+
                     </tr>
                     <%
-                     }
-                 } catch (Exception e) {
-             System.out.println("Error al conectar con la db");
-             e.printStackTrace();
-         }
+                            }
+                        } catch (Exception e) {
+                            out.println("<h1>Error al Conectar con la DB</h1>");
+                            e.printStackTrace();
+                            String estado_conex = "Online";
+                        }
                     %>
                 </tbody>
             </table>        
             <!-- /Tabla del listado de usuarios -->
+
         </div>
         <div class="container">
             <!--Paginacion-->
