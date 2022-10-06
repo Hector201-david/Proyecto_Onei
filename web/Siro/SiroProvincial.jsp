@@ -312,8 +312,9 @@
                         } catch (Exception e) {
                            // out.println("<h1>Error al Conectar con la DB</h1>");
                             //e.printStackTrace();
-                              out.println(e.printStackTrace());
+                             // out.println(e.printStackTrace());
                             //String estado_conex = "Online";
+                          out.println(e.getMessage());
                         }
                     %>
                 </tbody>
