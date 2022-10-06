@@ -11,7 +11,7 @@ public class conexion {
 
         try {
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sige", "postgres", "postgresql");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sige", "root", "root");
             System.out.println("\n Conexion Exitosa con la DB");
 
         } catch (Exception e) {

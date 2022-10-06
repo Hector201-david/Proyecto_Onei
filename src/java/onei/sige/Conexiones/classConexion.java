@@ -6,8 +6,8 @@ import java.sql.DriverManager;
 public class classConexion {
 
     private String db = "sige";
-    private String user = "postgres";
-    private String passwd = "postgresql";
+    private String user = "root";
+    private String passwd = "root";
     private String url = "jdbc:postgresql://localhost:5432/" + db;
     private Connection con;
     private static classConexion instance = new classConexion();
