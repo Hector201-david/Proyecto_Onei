@@ -3,11 +3,11 @@ package onei.sige.Conexiones;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class conexion {
+public class conexionA {
 
     Connection con;
 
-    public conexion() {
+    public conexionA() {
 
         try {
             Class.forName("org.postgresql.Driver");
