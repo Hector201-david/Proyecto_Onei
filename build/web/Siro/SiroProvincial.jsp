@@ -11,8 +11,11 @@
 <%
     try {
 
-        Connection con = classConexion.getInstance().getConexion();
-        String query = "SELECT * FROM mod_maestros.tbmaestro_general";
+       // Connection con = classConexion.getInstance().getConexion();
+       Class.forName("org.postgresql.Driver");
+       Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sige", "root", "root");
+       
+       String query = "SELECT * FROM mod_maestros.tbmaestro_general";
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(query);
 
